@@ -3,119 +3,111 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#070b10">
+<meta name="theme-color" content="#07090d">
 <link rel="manifest" href="manifest.webmanifest">
 <title>BECOME</title>
 <style>
-:root{--bg:#070b10;--panel:#0d151e;--line:#2a3d4d;--gold:#e7b84f;--gold2:#f6d67f;--muted:#8c99a6}
-*{box-sizing:border-box}body{margin:0;background:#070b10;color:#f4f0e7;font-family:system-ui,-apple-system,Segoe UI,sans-serif}button{font:inherit}
-header{padding:11px 15px;border-bottom:1px solid var(--line);background:#070b10;position:sticky;top:0;z-index:10}.logo{font:800 25px Georgia,serif;letter-spacing:4px;color:#f0ce83}.motto{font-size:9px;color:var(--muted);letter-spacing:1px}.top{display:flex;align-items:center}.lvl{margin-left:auto;width:48px;height:48px;border:1px solid var(--gold);border-radius:50%;display:grid;place-items:center;color:var(--gold2);font-weight:900}
-main{max-width:1100px;margin:auto;padding:10px 10px 80px}.tabs{display:flex;overflow:auto;border:1px solid var(--line);border-radius:8px;background:#0b1219}.tabs button{min-width:100px;flex:1;padding:10px 5px;background:none;border:0;color:#8795a3;font-size:10px}.tabs .on{color:var(--gold2);box-shadow:inset 0 -2px var(--gold)}.page{display:none}.page.on{display:block}
-.layout{display:grid;grid-template-columns:230px minmax(420px,1fr) 270px;gap:8px;margin-top:8px}.panel{border:1px solid var(--line);border-radius:10px;background:linear-gradient(145deg,#111c27,#091118);overflow:hidden}.panel h3{font:13px Georgia,serif;margin:0;padding:11px;border-bottom:1px solid var(--line)}.pad{padding:12px}.muted{font-size:10px;color:var(--muted)}.row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #1d2a35;font-size:10px}
-.hero{height:610px;position:relative;overflow:hidden;background:radial-gradient(circle at 50% 35%,#2a4050,#0b131b 65%,#070b10)}.avatarWrap{height:100%;display:grid;place-items:center}.avatarSvg{width:min(92%,420px);height:570px}.slots{position:absolute;left:9px;top:10px;z-index:2;display:flex;flex-direction:column;gap:6px}.slot{width:44px;height:44px;border:1px solid var(--line);border-radius:7px;background:#071019dd;display:grid;place-items:center;font-size:20px}.slot.on{border-color:var(--gold)}.heroInfo{position:absolute;left:12px;bottom:12px;z-index:3;background:#070b10e8;border:1px solid var(--line);border-radius:8px;padding:8px 11px}.heroInfo b{font:22px Georgia,serif}.heroInfo small{display:block;font-size:9px;color:#aeb9c3}.actions{position:absolute;right:10px;bottom:12px;z-index:3}.btn{border:1px solid #7a5b25;border-radius:7px;padding:9px 12px;background:linear-gradient(#896a30,#4b391c);color:#f5d891;font-size:10px}.btn.alt{background:#0b141c;border-color:#3c4e5d}
-.classes{padding:7px}.classBtn{width:100%;display:flex;align-items:center;gap:9px;text-align:left;color:#eee;background:#0c151e;border:1px solid var(--line);border-radius:7px;padding:9px;margin-bottom:6px}.classBtn.on{border-color:var(--gold);background:#1b180f}.classBtn .ico{font-size:25px}.classBtn small{display:block;color:var(--muted);font-size:9px;margin-top:2px}.classBtn em{margin-left:auto;color:var(--gold2);font-style:normal}
-.bottom{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:8px}.box{padding:11px}.items{display:grid;grid-template-columns:repeat(6,1fr);gap:5px}.item{height:43px;border:1px solid var(--line);border-radius:6px;background:#0b141c;color:white;font-size:20px}.item.on{border-color:var(--gold)}.detail{display:flex;gap:8px;margin-top:8px;padding:8px;border:1px solid var(--line);border-radius:6px;background:#0b141c}.detailIcon{font-size:30px}.detail b{font:13px Georgia,serif;color:var(--gold2)}.detail small{display:block;font-size:9px;color:#aeb8c1}.stats{display:grid;grid-template-columns:1fr 1fr;gap:5px}.stat{padding:7px;background:#0b141c;border:1px solid var(--line);border-radius:6px}.stat span{font-size:8px;color:var(--muted)}.stat b{display:block;font-size:20px}.bar{height:5px;background:#263440;border-radius:99px;overflow:hidden}.bar i{display:block;height:100%;background:linear-gradient(90deg,#a56d20,#f3d176)}
-.pagePanel{padding:12px}.equipGrid{display:grid;grid-template-columns:repeat(5,1fr);gap:7px}.equip{padding:10px 5px;border:1px solid var(--line);border-radius:7px;background:#0b141c;color:#eee}.equip .ico{font-size:28px}.equip small{display:block;color:var(--muted);font-size:9px}.equip.on{border-color:var(--gold)}
-.custom{display:grid;grid-template-columns:360px 1fr;gap:10px}.preview{min-height:540px;border:1px solid var(--line);border-radius:8px;background:radial-gradient(circle at 50% 35%,#2a4050,#0b131b 70%);display:grid;place-items:center}.preview .avatarSvg{width:330px;height:510px}.control{padding:4px}.section{padding:11px 0;border-bottom:1px solid var(--line)}.section b{display:block;font-size:9px;letter-spacing:1px;color:#aeb8c2;margin-bottom:7px}.choices{display:flex;flex-wrap:wrap;gap:5px}.choice{border:1px solid var(--line);background:#0b141c;color:#d0d7de;border-radius:6px;padding:7px 9px;font-size:10px}.choice.on{border-color:var(--gold);color:var(--gold2);background:#251f12}.swatches{display:flex;gap:7px}.sw{width:29px;height:29px;border-radius:50%;border:2px solid var(--line)}.sw.on{border-color:var(--gold2)}
-.dev{display:flex;align-items:center;gap:10px;padding:10px;background:#181309;border:1px solid #705620;border-radius:7px;margin-bottom:10px}.dev b{color:var(--gold2);font-size:10px}.dev span{flex:1;color:var(--muted);font-size:9px}
-.mobile{display:none}
-@media(max-width:850px){main{padding-bottom:70px}.tabs{display:none}.layout{grid-template-columns:1fr}.side{display:none}.bottom{grid-template-columns:1fr}.hero{height:560px}.custom{grid-template-columns:1fr}.preview{min-height:420px}.equipGrid{grid-template-columns:repeat(4,1fr)}.mobile{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:20;background:#080e15f7;border-top:1px solid var(--line)}.mobile button{flex:1;padding:8px 1px;background:none;border:0;color:#8d99a5;font-size:8px}.mobile .on{color:var(--gold2)}}
+:root{--bg:#07090d;--panel:#0d1118;--panel2:#111721;--line:#27313d;--gold:#e5b94f;--gold2:#f4d27a;--muted:#87919d}
+*{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:#eee9df;font-family:system-ui,-apple-system,Segoe UI,sans-serif}button{font:inherit}
+header{height:104px;background:#07090d;border-bottom:1px solid #202a34;padding:16px 18px;display:flex;align-items:center;position:sticky;top:0;z-index:20}.brand{font:800 27px Georgia,serif;letter-spacing:4px;color:#efd084}.motto{font-size:9px;letter-spacing:1.2px;color:#818c98;margin-top:1px}.level{margin-left:auto;width:51px;height:51px;border:1px solid var(--gold);border-radius:50%;display:grid;place-items:center;color:var(--gold2);font-weight:900}
+main{max-width:700px;margin:auto;padding:10px 10px 78px}.page{display:none}.page.active{display:block}.panel{border:1px solid var(--line);background:linear-gradient(145deg,#111923,#080d13);border-radius:10px;overflow:hidden}.panelTitle{padding:13px 15px;border-bottom:1px solid var(--line);font:14px Georgia,serif;letter-spacing:.5px}
+.home{height:calc(100vh - 192px);min-height:560px;position:relative;background:radial-gradient(circle at 50% 38%,#1e303e 0,#111a24 38%,#070b10 78%);overflow:hidden}.home:before{content:"";position:absolute;inset:0;background:linear-gradient(transparent 60%,#05070a 100%);pointer-events:none}.stage{height:100%;display:grid;place-items:center}.avatar{width:min(100%,560px);height:min(100%,690px);display:block}.identity{position:absolute;left:18px;bottom:20px;padding:9px 13px;background:#060a0ee8;border:1px solid var(--line);border-radius:8px}.identity b{font:25px Georgia,serif}.identity small{display:block;font-size:9px;color:#a9b3bc;margin-top:2px}.homeLevel{position:absolute;right:18px;top:17px;background:#070b10d9;border:1px solid var(--line);border-radius:7px;padding:6px 9px;font-size:9px;color:var(--gold2)}
+.bottom{display:flex;gap:5px;position:fixed;left:0;right:0;bottom:0;height:66px;background:#080c12f7;border-top:1px solid #27313c;z-index:30;max-width:none}.bottom button{flex:1;background:none;border:0;color:#818c98;font-size:8px}.bottom button span{font-size:21px;display:block;margin-bottom:1px}.bottom button.active{color:var(--gold2);box-shadow:inset 0 2px var(--gold)}
+.section{padding:13px}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px}.card{background:#0b1219;border:1px solid var(--line);border-radius:8px;padding:12px}.card h3{font:14px Georgia,serif;margin:0 0 10px}.choices{display:flex;gap:6px;flex-wrap:wrap}.choice{border:1px solid var(--line);background:#0a1118;color:#cdd4da;border-radius:6px;padding:8px 10px;font-size:10px}.choice.active{border-color:var(--gold);color:var(--gold2);background:#211b0e}.swatches{display:flex;gap:7px;flex-wrap:wrap}.sw{width:31px;height:31px;border-radius:50%;border:2px solid #303c47}.sw.active{border-color:var(--gold2);box-shadow:0 0 0 2px #6e5420}
+.preview{min-height:430px;display:grid;place-items:center;background:radial-gradient(circle at 50% 35%,#233745,#0a1017 72%);border-bottom:1px solid var(--line)}.preview .avatar{width:320px;height:410px}
+.equip{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.equip button{background:#0b1219;border:1px solid var(--line);border-radius:8px;color:#eee;padding:10px 5px}.equip button.active{border-color:var(--gold)}.equip .ico{font-size:27px}.equip small{display:block;color:var(--muted);font-size:8px;margin-top:4px}
+.classList{display:grid;gap:7px}.class{display:flex;align-items:center;gap:10px;width:100%;text-align:left;background:#0b1219;color:#eee;border:1px solid var(--line);border-radius:8px;padding:12px}.class.active{border-color:var(--gold);background:#211b0e}.class .ico{font-size:28px}.class b{font:14px Georgia,serif}.class small{display:block;color:var(--muted);font-size:9px;margin-top:2px}.class em{margin-left:auto;color:var(--gold2);font-style:normal}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:7px;padding:13px}.stat{background:#0b1219;border:1px solid var(--line);border-radius:7px;padding:9px}.stat span{font-size:8px;color:var(--muted)}.stat b{display:block;font-size:21px}.bar{height:5px;background:#25303a;border-radius:99px;margin-top:6px}.bar i{display:block;height:100%;background:linear-gradient(90deg,#9b671c,#f2cf6e)}
+.list{padding:13px}.row{display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid #202b35;font-size:10px}
+@media(min-width:851px){main{padding-bottom:20px}.bottom{position:sticky;bottom:0;margin:auto;width:100%;max-width:700px;border:1px solid var(--line);border-radius:8px}.home{height:calc(100vh - 165px)}}
 </style>
 </head>
 <body>
-<header><div class="top"><div><div class="logo">BECOME</div><div class="motto">DISCIPLINE CREATES FREEDOM</div></div><div class="lvl">13</div></div></header>
+<header><div><div class="brand">BECOME</div><div class="motto">DISCIPLINE CREATES FREEDOM</div></div><div class="level">13</div></header>
 <main>
-<nav class="tabs"><button class="on" data-page="avatar">♙ AVATAR</button><button data-page="custom">✦ APPARENCE</button><button data-page="plan">▣ PLAN</button><button data-page="equip">♜ ÉQUIPEMENT</button><button data-page="classes">♞ CLASSES</button><button data-page="stats">▥ STATS</button><button data-page="journal">▤ JOURNAL</button></nav>
-
-<section id="avatar" class="page on">
-<div class="layout">
-<aside class="panel side"><div class="pad"><div style="font:20px Georgia,serif">MacArthur</div><div class="muted" id="sideClass">Guerrier · Niveau 13</div><div style="margin:18px 0" class="muted">PROGRESSION</div><div class="row"><span>Entraînements</span><b>48</b></div><div class="row"><span>Records</span><b>12</b></div><div class="row"><span>Série</span><b style="color:#48d392">14 jours</b></div><div style="margin-top:15px" class="muted">OBJECTIF</div><p style="font:14px Georgia,serif">Marathon Paris 2027</p><div class="bar"><i style="width:33%"></i></div></div></aside>
-<div class="panel hero"><div class="slots"><div class="slot on">⚔️</div><div class="slot">🛡️</div><div class="slot">🥾</div><div class="slot">💍</div><div class="slot">🧥</div></div><div class="avatarWrap"><svg id="mainAvatar" class="avatarSvg" viewBox="0 0 160 220"></svg></div><div class="heroInfo"><b>MacArthur</b><small id="heroClass">GUERRIER · FORCE & CORPS</small></div><div class="actions"><button class="btn alt" data-page="custom">Apparence</button> <button class="btn" data-page="equip">Équipement</button></div></div>
-<aside class="panel"><h3>CLASSES</h3><div class="classes" id="homeClasses"></div></aside>
-</div>
-<div class="bottom"><div class="panel box"><h3>ÉQUIPEMENT</h3><div class="items" id="quickWeapons"></div><div class="detail"><div class="detailIcon" id="detailIcon">⚔️</div><div><b id="detailName">Épée du Loup</b><small id="detailInfo">Légendaire · Équipé</small></div></div></div><div class="panel box"><h3>STATS</h3><div class="stats" id="miniStats"></div></div><div class="panel box"><h3>QUÊTES</h3><div class="row"><span>🏃 Sortie longue 20 km</span><b>+50 XP</b></div><div class="row"><span>🏋️ 3 séances force</span><b>+30 XP</b></div><div class="row"><span>🥗 Plan alimentaire</span><b>+40 XP</b></div></div></div>
+<section id="avatar" class="page active">
+<div class="panel home"><div class="homeLevel">NIVEAU 13 · 2 450 / 5 000 XP</div><div class="stage"><svg id="mainAvatar" class="avatar" viewBox="0 0 160 220"></svg></div><div class="identity"><b>MacArthur</b><small id="homeClass">GUERRIER · FORCE & CORPS</small></div></div>
 </section>
 
-<section id="custom" class="page"><div class="panel"><h3>✦ APPARENCE</h3><div class="custom"><div class="preview"><svg id="customAvatar" class="avatarSvg" viewBox="0 0 160 220"></svg></div><div class="control">
-<div class="section"><b>SEXE</b><div class="choices"><button class="choice on" data-k="gender" data-v="male">♂ Homme</button><button class="choice" data-k="gender" data-v="female">♀ Femme</button></div></div>
-<div class="section"><b>ÂGE</b><div class="choices"><button class="choice" data-k="age" data-v="young">Jeune</button><button class="choice on" data-k="age" data-v="adult">Adulte</button><button class="choice" data-k="age" data-v="senior">Senior</button></div></div>
-<div class="section"><b>VISAGE</b><div class="choices"><button class="choice" data-k="face" data-v="1">Visage 1</button><button class="choice on" data-k="face" data-v="2">Visage 2</button><button class="choice" data-k="face" data-v="3">Visage 3</button><button class="choice" data-k="face" data-v="4">Visage 4</button></div></div>
-<div class="section"><b>TEINT</b><div class="swatches" id="skin"></div></div>
-<div class="section"><b>CHEVEUX</b><div class="choices"><button class="choice on" data-k="hairStyle" data-v="short">Court</button><button class="choice" data-k="hairStyle" data-v="medium">Mi-long</button><button class="choice" data-k="hairStyle" data-v="long">Long</button><button class="choice" data-k="hairStyle" data-v="curly">Bouclé</button></div><div class="swatches" id="hair"></div></div>
-<div class="section"><b>YEUX</b><div class="swatches" id="eyes"></div></div>
-<div class="section"><b>BARBE</b><div class="choices"><button class="choice on" data-k="beard" data-v="none">Aucune</button><button class="choice" data-k="beard" data-v="short">Courte</button><button class="choice" data-k="beard" data-v="long">Longue</button></div></div>
-</div></div></div></section>
+<section id="custom" class="page"><div class="panel"><div class="panelTitle">✦ APPARENCE</div><div class="preview"><svg id="customAvatar" class="avatar" viewBox="0 0 160 220"></svg></div><div class="section">
+<div class="card"><h3>Sexe</h3><div class="choices"><button class="choice active" data-k="gender" data-v="male">♂ Homme</button><button class="choice" data-k="gender" data-v="female">♀ Femme</button></div></div>
+<div class="card"><h3>Âge</h3><div class="choices"><button class="choice" data-k="age" data-v="young">Jeune</button><button class="choice active" data-k="age" data-v="adult">Adulte</button><button class="choice" data-k="age" data-v="senior">Senior</button></div></div>
+<div class="card"><h3>Visage</h3><div class="choices"><button class="choice" data-k="face" data-v="1">1</button><button class="choice active" data-k="face" data-v="2">2</button><button class="choice" data-k="face" data-v="3">3</button><button class="choice" data-k="face" data-v="4">4</button></div></div>
+<div class="card"><h3>Teint</h3><div class="swatches" id="skin"></div></div>
+<div class="card"><h3>Coiffure</h3><div class="choices"><button class="choice active" data-k="hairStyle" data-v="short">Court</button><button class="choice" data-k="hairStyle" data-v="medium">Mi-long</button><button class="choice" data-k="hairStyle" data-v="long">Long</button><button class="choice" data-k="hairStyle" data-v="curly">Bouclé</button></div></div>
+<div class="card"><h3>Couleur des cheveux</h3><div class="swatches" id="hair"></div></div>
+<div class="card"><h3>Yeux</h3><div class="swatches" id="eyes"></div></div>
+<div class="card"><h3>Barbe</h3><div class="choices"><button class="choice active" data-k="beard" data-v="none">Aucune</button><button class="choice" data-k="beard" data-v="short">Courte</button><button class="choice" data-k="beard" data-v="long">Longue</button></div></div>
+</div></section>
 
-<section id="equip" class="page"><div class="panel"><h3>🎒 ÉQUIPEMENT</h3><div class="pagePanel"><div class="dev"><b>🛠 MODE DÉVELOPPEUR</b><span>Tous les objets sont accessibles.</span></div><h4>Armes</h4><div class="equipGrid" id="weapons"></div><h4>Armures</h4><div class="equipGrid" id="armors"></div><h4>Accessoires</h4><div class="equipGrid" id="accessories"></div></div></div></section>
-<section id="classes" class="page"><div class="panel"><h3>♞ CLASSES</h3><div class="pagePanel"><div class="dev"><b>🛠 MODE DÉVELOPPEUR : ON</b><span>Les 5 classes sont déverrouillées pour les tests.</span></div><div id="devClasses"></div></div></div></section>
-<section id="plan" class="page"><div class="panel pagePanel"><h3>▣ PLAN & DISCIPLINE</h3><div class="row"><span>Sport</span><b>3 / 3</b></div><div class="row"><span>Nutrition</span><b>5 / 7</b></div><div class="row"><span>Routine</span><b>6 / 7</b></div></div></section>
-<section id="stats" class="page"><div class="panel pagePanel"><h3>▥ STATS</h3><div class="stats" id="allStats"></div></div></section>
-<section id="journal" class="page"><div class="panel pagePanel"><h3>▤ JOURNAL</h3><div class="row"><span>🏋️ Force</span><b>+120 XP</b></div><div class="row"><span>🏃 Course 12 km</span><b>+150 XP</b></div><div class="row"><span>🥗 Nutrition</span><b>+40 XP</b></div></div></section>
+<section id="classes" class="page"><div class="panel"><div class="panelTitle">♞ CLASSES · MODE DÉVELOPPEUR</div><div class="section"><div class="classList" id="classesList"></div></div></div></section>
+
+<section id="equip" class="page"><div class="panel"><div class="panelTitle">⚔ ÉQUIPEMENT · MODE DÉVELOPPEUR</div><div class="section"><h3>Armes</h3><div class="equip" id="weapons"></div><h3>Armures</h3><div class="equip" id="armors"></div><h3>Accessoires</h3><div class="equip" id="accessories"></div></div></div></section>
+
+<section id="plan" class="page"><div class="panel"><div class="panelTitle">▣ PLAN</div><div class="list"><div class="row"><span>🏃 Course</span><b>3 / 3</b></div><div class="row"><span>🏋️ Force</span><b>2 / 3</b></div><div class="row"><span>😴 Routine</span><b>6 / 7</b></div></div></div></section>
+<section id="stats" class="page"><div class="panel"><div class="panelTitle">▥ STATS</div><div class="stats" id="stats"></div></div></section>
+<section id="journal" class="page"><div class="panel"><div class="panelTitle">▤ JOURNAL</div><div class="list"><div class="row"><span>🏋️ Séance force</span><b>+120 XP</b></div><div class="row"><span>🏃 Course 12 km</span><b>+150 XP</b></div><div class="row"><span>📖 Lecture</span><b>+20 XP</b></div></div></div></section>
 </main>
-<nav class="mobile"><button class="on" data-page="avatar">♙<br>Avatar</button><button data-page="custom">✦<br>Style</button><button data-page="plan">▣<br>Plan</button><button data-page="equip">♜<br>Équip.</button><button data-page="stats">▥<br>Stats</button><button data-page="journal">▤<br>Journal</button></nav>
+<nav class="bottom"><button class="active" data-page="avatar"><span>♙</span>Avatar</button><button data-page="custom"><span>✦</span>Apparence</button><button data-page="classes"><span>♞</span>Classes</button><button data-page="equip"><span>⚔</span>Équip.</button><button data-page="plan"><span>▣</span>Plan</button><button data-page="stats"><span>▥</span>Stats</button></nav>
 
 <script>
-const CLASSES=[["⚔️","Guerrier","Force & Corps"],["🏹","Chasseur","Endurance & Nature"],["🗡️","Assassin","Vitesse & Furtivité"],["🔮","Mage","Esprit & Contrôle"],["🛡️","Paladin","Équilibre & Dévouement"]];
-const WEAPONS=[["⚔️","Épée du Loup","Légendaire"],["🗡️","Lame d'acier","Commun"],["🪓","Hache du Titan","Rare"],["🏹","Arc du Rôdeur","Rare"],["🔮","Bâton Astral","Épique"],["⚡","Épée Runique","Légendaire"],["🔨","Marteau sacré","Épique"],["🗡️","Dagues de l'ombre","Rare"]];
-const ARMORS=[["🛡️","Armure de guerre","Légendaire"],["🥋","Armure légère","Commun"],["🥷","Armure du Chasseur","Rare"],["🧥","Robe d'Archimage","Épique"],["🛡️","Armure du Paladin","Légendaire"]];
-const ACCESSORIES=[["💍","Anneau de Discipline","Rare"],["👑","Couronne du Champion","Légendaire"],["📿","Amulette mentale","Épique"],["🧥","Cape de l'Ombre","Épique"]];
-const STATS={Force:28,Endurance:24,Discipline:26,Mental:22,Vitesse:21,Vitalité:25};
+const CL=[["⚔️","Guerrier","Force & Corps"],["🏹","Chasseur","Endurance & Nature"],["🗡️","Assassin","Vitesse & Furtivité"],["🔮","Mage","Esprit & Contrôle"],["🛡️","Paladin","Équilibre & Dévouement"]];
+const WE=[["⚔️","Épée longue","Rare"],["🪓","Hache","Rare"],["🔨","Marteau","Épique"],["🏹","Arc long","Rare"],["🔮","Bâton","Épique"],["🗡️","Dagues","Rare"],["⚡","Lame runique","Légendaire"]];
+const AR=[["🛡️","Armure de guerre","Rare"],["🥷","Armure du chasseur","Rare"],["🧥","Robe d'archimage","Épique"],["🛡️","Armure du paladin","Légendaire"]];
+const AC=[["💍","Anneau","Rare"],["📿","Amulette","Épique"],["🧥","Cape","Épique"],["👑","Couronne","Légendaire"]];
+const ST={Force:28,Endurance:24,Discipline:26,Mental:22,Vitesse:21,Vitalité:25};
 let state={gender:"male",age:"adult",face:"2",skin:"#d69b70",hair:"#251b18",hairStyle:"short",eye:"#4b78b8",beard:"none",clazz:0,weapon:0};
-try{const old=JSON.parse(localStorage.getItem("become_pixel_v6"));if(old)state=Object.assign(state,old)}catch(e){}
-function save(){try{localStorage.setItem("become_pixel_v6",JSON.stringify(state))}catch(e){} render()}
-function page(id){document.querySelectorAll(".page").forEach(x=>x.classList.toggle("on",x.id===id));document.querySelectorAll("[data-page]").forEach(x=>x.classList.toggle("on",x.dataset.page===id));scrollTo(0,0)}
-document.addEventListener("click",e=>{const p=e.target.closest("[data-page]");if(p){page(p.dataset.page);return}const b=e.target.closest("[data-k]");if(b){state[b.dataset.k]=b.dataset.v;save();return}const c=e.target.closest("[data-class]");if(c){state.clazz=+c.dataset.class;save();return}const w=e.target.closest("[data-weapon]");if(w){state.weapon=+w.dataset.weapon;save();return}});
-function rect(x,y,w,h,fill){return `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${fill}"/>`}
-function avatarSVG(){
- let s="";const skin=state.skin,hair=state.hair,eye=state.eye,cl=state.clazz,young=state.age==="young",senior=state.age==="senior";
- const armor=[["#46505e","#aab3bf"],["#4d664e","#8ba979"],["#202833","#626d7b"],["#4e3c70","#a487df"],["#626e79","#e3c56d"]][cl];
- s+=rect(48,196,27,7,"#0e141a")+rect(84,196,29,7,"#0e141a");
- s+=rect(44,103,72,65,armor[0])+rect(37,119,14,48,armor[0])+rect(109,119,14,48,armor[0]);
- if(cl===0)s+=rect(48,108,64,57,"#4d5664")+rect(76,111,5,50,"#b9c0c9")+rect(52,132,56,5,"#7d8794");
- if(cl===1)s+=rect(48,108,64,57,"#526b50")+rect(56,115,48,5,"#91a77c")+rect(59,128,42,4,"#394c39");
- if(cl===2)s+=rect(48,108,64,57,"#252e39")+rect(58,113,44,4,"#556171")+rect(63,130,34,4,"#161c24");
- if(cl===3)s+=rect(48,108,64,57,"#514175")+rect(56,114,48,5,"#9c7ed5")+rect(60,128,40,4,"#6c55a0");
- if(cl===4)s+=rect(48,108,64,57,"#68727d")+rect(55,113,50,5,"#e0c06a")+rect(75,116,10,39,"#3f4650");
- s+=rect(53,158,22,39,cl===1?"#40533f":"#303946")+rect(85,158,22,39,cl===3?"#29223c":"#303946");
- s+=rect(72,94,16,14,skin);
- const hw=young?28:senior?31:30;s+=rect(80-hw,60,hw*2,34,skin)+rect(80-hw-4,71,5,12,skin)+rect(80+hw-1,71,5,12,skin);
- if(state.hairStyle==="long")s+=rect(80-hw-2,53,hw*2+4,18,hair)+rect(80-hw-2,65,9,32,hair)+rect(80+hw-7,65,9,32,hair);
- else if(state.hairStyle==="curly"){for(let x=51;x<110;x+=9)s+=rect(x,51+(x%18),10,10,hair)}
- else if(state.hairStyle==="medium")s+=rect(80-hw,53,hw*2,15,hair)+rect(80-hw,61,8,18,hair)+rect(80+hw-8,61,8,18,hair);
- else s+=rect(80-hw,54,hw*2,12,hair)+rect(80-hw+5,49,hw-5,9,hair);
- if(cl===3)s+=rect(48,51,64,7,"#171225")+rect(53,47,54,7,"#261a40");
- if(cl===4)s+=rect(58,47,44,5,"#c8a94f")+rect(64,42,32,5,"#e2c46c");
- if(state.face==="1")s+=rect(61,71,7,4,eye)+rect(92,71,7,4,eye)+rect(70,87,20,3,"#a95f55");
- else if(state.face==="3")s+=rect(64,72,4,6,eye)+rect(93,72,4,6,eye)+rect(68,88,24,2,"#a95f55");
- else if(state.face==="4")s+=rect(61,73,7,5,eye)+rect(92,73,7,5,eye)+rect(70,86,20,4,"#a95f55");
- else s+=rect(63,73,5,5,eye)+rect(92,73,5,5,eye)+rect(69,87,22,3,"#a95f55");
- if(state.beard!=="none")s+=rect(66,88,28,state.beard==="long"?11:7,hair);
- if(senior)s+=rect(63,67,5,2,"#777")+rect(92,67,5,2,"#777");
- if(cl===1||state.weapon===3)s+=rect(122,117,3,70,"#8a623b")+rect(126,115,3,70,"#e5d6b7");
- else if(cl===3||state.weapon===4)s+=rect(121,95,4,86,"#765437")+rect(118,90,10,10,cl===3?"#b17aff":"#66b9ff");
- else if(state.weapon===2)s+=rect(121,120,5,72,"#805c3b")+rect(126,115,16,25,"#dce4ea");
- else if(cl===2)s+=rect(119,110,3,70,"#dfe7ef")+rect(126,110,3,70,"#dfe7ef");
- else s+=rect(123,111,5,82,"#eaf0f7")+rect(119,108,13,5,"#9f6c32")+rect(121,101,9,10,"#fff");
- s+=rect(45,148,70,5,"#171e26")+rect(78,146,5,9,cl===4?"#e6c75d":"#e4b64f");
+try{const x=JSON.parse(localStorage.getItem("become_v7"));if(x)state=Object.assign(state,x)}catch(e){}
+function save(){localStorage.setItem("become_v7",JSON.stringify(state));render()}
+function go(id){document.querySelectorAll(".page").forEach(x=>x.classList.toggle("active",x.id===id));document.querySelectorAll("[data-page]").forEach(x=>x.classList.toggle("active",x.dataset.page===id));scrollTo(0,0)}
+document.addEventListener("click",e=>{let b=e.target.closest("[data-page]");if(b){go(b.dataset.page);return}b=e.target.closest("[data-k]");if(b){state[b.dataset.k]=b.dataset.v;save();return}b=e.target.closest("[data-class]");if(b){state.clazz=+b.dataset.class;save();return}b=e.target.closest("[data-weapon]");if(b){state.weapon=+b.dataset.weapon;save()}});
+
+function R(x,y,w,h,c){return `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${c}"/>`}
+function avatar(){
+ let s="";const skin=state.skin,h=state.hair,e=state.eye,cl=state.clazz,young=state.age==="young",senior=state.age==="senior";
+ const armor=[["#414c5b","#aeb8c4"],["#4b654e","#90a879"],["#202733","#6a7482"],["#4d3c70","#a98ce0"],["#626e79","#e5c66b"]][cl];
+ s+=R(48,196,28,7,"#0a0e13")+R(84,196,29,7,"#0a0e13");
+ s+=R(42,103,76,64,armor[0])+R(35,118,15,49,armor[0])+R(110,118,15,49,armor[0]);
+ if(cl===0)s+=R(48,108,64,57,"#4c5564")+R(76,111,5,50,"#c0c7cf")+R(52,132,56,5,"#818b98");
+ if(cl===1)s+=R(48,108,64,57,"#506a51")+R(56,115,48,5,"#91a979")+R(59,128,42,4,"#394b3a");
+ if(cl===2)s+=R(48,108,64,57,"#252e39")+R(58,113,44,4,"#596574")+R(63,130,34,4,"#151b23");
+ if(cl===3)s+=R(48,108,64,57,"#514174")+R(56,114,48,5,"#a184df")+R(60,128,40,4,"#6d55a1");
+ if(cl===4)s+=R(48,108,64,57,"#69737e")+R(55,113,50,5,"#e0bf65")+R(75,116,10,39,"#404750");
+ s+=R(53,158,22,39,cl===1?"#40523f":"#303946")+R(85,158,22,39,cl===3?"#29233d":"#303946");
+ s+=R(72,94,16,14,skin);const hw=young?28:senior?31:30;s+=R(80-hw,60,hw*2,34,skin)+R(80-hw-4,71,5,12,skin)+R(80+hw-1,71,5,12,skin);
+ if(state.hairStyle==="long")s+=R(80-hw-2,53,hw*2+4,18,h)+R(80-hw-2,65,9,32,h)+R(80+hw-7,65,9,32,h);
+ else if(state.hairStyle==="curly"){for(let x=51;x<110;x+=9)s+=R(x,51+(x%18),10,10,h)}
+ else if(state.hairStyle==="medium")s+=R(80-hw,53,hw*2,15,h)+R(80-hw,61,8,18,h)+R(80+hw-8,61,8,18,h);
+ else s+=R(80-hw,54,hw*2,12,h)+R(80-hw+5,49,hw-5,9,h);
+ if(cl===3)s+=R(48,51,64,7,"#171225")+R(53,47,54,7,"#261a40");
+ if(cl===4)s+=R(58,47,44,5,"#c8a94f")+R(64,42,32,5,"#e2c46c");
+ if(state.face==="1")s+=R(61,71,7,4,e)+R(92,71,7,4,e)+R(70,87,20,3,"#a95f55");
+ else if(state.face==="3")s+=R(64,72,4,6,e)+R(93,72,4,6,e)+R(68,88,24,2,"#a95f55");
+ else if(state.face==="4")s+=R(61,73,7,5,e)+R(92,73,7,5,e)+R(70,86,20,4,"#a95f55");
+ else s+=R(63,73,5,5,e)+R(92,73,5,5,e)+R(69,87,22,3,"#a95f55");
+ if(state.beard!=="none")s+=R(66,88,28,state.beard==="long"?11:7,h);
+ if(senior)s+=R(63,67,5,2,"#777")+R(92,67,5,2,"#777");
+ if(cl===1||state.weapon===3)s+=R(122,117,3,70,"#8a623b")+R(126,115,3,70,"#e5d6b7");
+ else if(cl===3||state.weapon===4)s+=R(121,95,4,86,"#765437")+R(118,90,10,10,cl===3?"#b17aff":"#66b9ff");
+ else if(state.weapon===1||state.weapon===2)s+=R(121,120,5,72,"#805c3b")+R(126,115,16,25,"#dce4ea");
+ else if(cl===2)s+=R(119,110,3,70,"#dfe7ef")+R(126,110,3,70,"#dfe7ef");
+ else s+=R(123,111,5,82,"#eaf0f7")+R(119,108,13,5,"#9f6c32")+R(121,101,9,10,"#fff");
+ s+=R(45,148,70,5,"#171e26")+R(78,146,5,9,cl===4?"#e6c75d":"#e4b64f");
  return s;
 }
-function cards(target,arr,kind){document.getElementById(target).innerHTML=arr.map((x,i)=>`<button class="equip ${kind==="weapon"&&i===state.weapon?"on":""}" data-weapon="${kind==="weapon"?i:""}"><div class="ico">${x[0]}</div><b>${x[1]}</b><small>${x[2]}${kind==="weapon"&&i===state.weapon?" · Équipé":" · Équiper"}</small></button>`).join("")}
-function classCards(id){document.getElementById(id).innerHTML=CLASSES.map((x,i)=>`<button class="classBtn ${i===state.clazz?"on":""}" data-class="${i}"><div class="ico">${x[0]}</div><div><b>${x[1]}</b><small>${x[2]}</small></div><em>${i===state.clazz?"✓":"Choisir"}</em></button>`).join("")}
 function render(){
- document.getElementById("mainAvatar").innerHTML=avatarSVG();document.getElementById("customAvatar").innerHTML=avatarSVG();
- classCards("homeClasses");classCards("devClasses");
- document.getElementById("heroClass").textContent=CLASSES[state.clazz][1].toUpperCase()+" · "+CLASSES[state.clazz][2].toUpperCase();document.getElementById("sideClass").textContent=CLASSES[state.clazz][1]+" · Niveau 13";
- document.getElementById("quickWeapons").innerHTML=WEAPONS.slice(0,6).map((x,i)=>`<button class="item ${i===state.weapon?"on":""}" data-weapon="${i}">${x[0]}</button>`).join("");
- document.getElementById("detailIcon").textContent=WEAPONS[state.weapon][0];document.getElementById("detailName").textContent=WEAPONS[state.weapon][1];document.getElementById("detailInfo").textContent=WEAPONS[state.weapon][2]+" · Équipé";
- cards("weapons",WEAPONS,"weapon");cards("armors",ARMORS,"armor");cards("accessories",ACCESSORIES,"accessory");
- const st=Object.entries(STATS).map(([k,v])=>`<div class="stat"><span>${k.toUpperCase()}</span><b>${v}</b><div class="bar"><i style="width:${v}%"></i></div></div>`).join("");document.getElementById("miniStats").innerHTML=st;document.getElementById("allStats").innerHTML=st;
+ document.getElementById("mainAvatar").innerHTML=avatar();document.getElementById("customAvatar").innerHTML=avatar();
+ document.getElementById("homeClass").textContent=CL[state.clazz][1].toUpperCase()+" · "+CL[state.clazz][2].toUpperCase();
+ document.getElementById("classesList").innerHTML=CL.map((x,i)=>`<button class="class ${i===state.clazz?"active":""}" data-class="${i}"><div class="ico">${x[0]}</div><div><b>${x[1]}</b><small>${x[2]} · Débloquée</small></div><em>${i===state.clazz?"✓":"Choisir"}</em></button>`).join("");
+ const build=(id,a,weapon=false)=>document.getElementById(id).innerHTML=a.map((x,i)=>`<button class="${weapon&&i===state.weapon?"active":""}" ${weapon?`data-weapon="${i}"`:""}><div class="ico">${x[0]}</div><b>${x[1]}</b><small>${x[2]}${weapon&&i===state.weapon?" · Équipé":""}</small></button>`).join("");
+ build("weapons",WE,true);build("armors",AR);build("accessories",AC);
+ document.getElementById("stats").innerHTML=Object.entries(ST).map(([k,v])=>`<div class="stat"><span>${k.toUpperCase()}</span><b>${v}</b><div class="bar"><i style="width:${v}%"></i></div></div>`).join("");
  const skin=["#f1c6a4","#d69b70","#a96d48","#6b422e","#42291e"],hc=["#111","#251b18","#b77a32","#8a3f2d","#d4d7dc"],ec=["#4b78b8","#4f9b72","#b88b35","#333","#765aa8"];
- document.getElementById("skin").innerHTML=skin.map(v=>`<button class="sw ${state.skin===v?"on":""}" style="background:${v}" data-k="skin" data-v="${v}"></button>`).join("");
- document.getElementById("hair").innerHTML=hc.map(v=>`<button class="sw ${state.hair===v?"on":""}" style="background:${v}" data-k="hair" data-v="${v}"></button>`).join("");
- document.getElementById("eyes").innerHTML=ec.map(v=>`<button class="sw ${state.eye===v?"on":""}" style="background:${v}" data-k="eye" data-v="${v}"></button>`).join("");
- document.querySelectorAll("[data-k]").forEach(b=>b.classList.toggle("on",String(state[b.dataset.k])===b.dataset.v));
+ document.getElementById("skin").innerHTML=skin.map(v=>`<button class="sw ${state.skin===v?"active":""}" style="background:${v}" data-k="skin" data-v="${v}"></button>`).join("");
+ document.getElementById("hair").innerHTML=hc.map(v=>`<button class="sw ${state.hair===v?"active":""}" style="background:${v}" data-k="hair" data-v="${v}"></button>`).join("");
+ document.getElementById("eyes").innerHTML=ec.map(v=>`<button class="sw ${state.eye===v?"active":""}" style="background:${v}" data-k="eye" data-v="${v}"></button>`).join("");
+ document.querySelectorAll("[data-k]").forEach(b=>b.classList.toggle("active",String(state[b.dataset.k])===b.dataset.v));
 }
 render();
 </script>
-</body>
-</html>
+</body></html>
