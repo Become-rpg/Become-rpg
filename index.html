@@ -1,5 +1,7 @@
 <!doctype html>
 <html lang="fr"><head>
+  <link rel="manifest" href="./manifest.webmanifest">
+<meta name="theme-color" content="#0b0e13">
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#0d1016"><title>BECOME</title>
 <style>
@@ -65,4 +67,8 @@ function exportData(){let b=new Blob([JSON.stringify(s,null,2)],{type:'applicati
 function resetData(){if(confirm('Supprimer toute la progression ?')){localStorage.removeItem(KEY);location.reload()}}
 function show(id){['home','add','quests','profile'].forEach(x=>document.getElementById(x).classList.toggle('hidden',x!==id))}
 function render(){let lv=Math.floor(s.xp/1000)+1,cur=s.xp%1000;level.textContent='Niveau '+lv;xptext.textContent=cur+' / 1000 XP';xpbar.style.width=(cur/10)+'%';for(let k in s.stats)document.getElementById(k).textContent=s.stats[k];streak.textContent=s.streak;let a=s.logs.filter(x=>x.date===today()),xp=a.reduce((n,x)=>n+(x.xp||0),0);today.innerHTML=a.length?`${a.length} action(s) — <b class="xp">+${xp} XP</b>`:'Aucune action enregistrée aujourd’hui.';['q1','q2','q3'].forEach(id=>document.getElementById(id).classList.toggle('done',!!s.quests[id]))}render();
-</script></body></html>
+</script></body><script>
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("./sw.js");
+}
+</script></html>
