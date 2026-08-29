@@ -66,22 +66,36 @@ function pick(k,v){S.profile[k]=v;render()}
 function saveAvatar(){S.profile.skin=document.getElementById("skin").value;S.profile.hair=document.getElementById("hair").value;save()}
 function equip(id){S.equipment[I.find(x=>x[0]===id)[3]]=id;save()}
 function activeClass(){return C.filter(x=>DEV_MODE||S.stats[x[3]]>=x[4]).sort((a,b)=>S.stats[b[3]]-S.stats[a[3]])[0]}
-function avatarSVG(){let p=S.profile,e=S.equipment,w=I.find(x=>x[0]===e.weapon),a=I.find(x=>x[0]===e.armor),acc=I.find(x=>x[0]===e.accessory);let female=p.gender==="female",senior=p.age==="senior",young=p.age==="young";let hair=p.hair, skin=p.skin;let bodyW=female?82:92;let bodyX=125-bodyW/2;let headR=senior?37:young?34:36;let armorColor=a?(a[0]==="gold"?"#b58a34":a[0]==="mage"?"#385b9a":a[0]==="hunter"?"#486348":"#737984"):"#303743";let cloak=p.gender==="female"?"#251d2d":"#1a2029";return `<svg class="avatar-svg" viewBox="0 0 250 360" xmlns="http://www.w3.org/2000/svg">
-<defs><linearGradient id="metal" x1="0" x2="1"><stop stop-color="#9ca8b8"/><stop offset=".5" stop-color="#f7fbff"/><stop offset="1" stop-color="#687483"/></linearGradient><linearGradient id="gold" x1="0" x2="1"><stop stop-color="#8f6722"/><stop offset=".5" stop-color="#f0ca6b"/><stop offset="1" stop-color="#9a7028"/></linearGradient></defs>
-<ellipse cx="125" cy="342" rx="80" ry="13" fill="#000" opacity=".55"/>
-<path d="M78 160 Q125 132 172 160 L194 326 Q125 344 56 326Z" fill="${cloak}" stroke="#4d5969" stroke-width="4"/>
-<path d="M${bodyX} 170 Q125 145 ${250-bodyX} 170 L${250-bodyX-5} 285 Q125 312 ${bodyX+5} 285Z" fill="${armorColor}" stroke="#8993a2" stroke-width="4"/>
-${female?`<path d="M${bodyX+15} 184 Q125 205 ${250-bodyX-15} 184" fill="none" stroke="#a9b1bc" stroke-width="3"/>`:""}
-<circle cx="125" cy="${108-(young?2:0)}" r="${headR}" fill="${skin}" stroke="#f1c6a4" stroke-width="3"/>
-<path d="M${125-headR-3} 106 Q125 ${55-(senior?3:0)} ${125+headR+3} 106 L${125+headR} 82 Q125 45 ${125-headR} 82Z" fill="${hair}"/>
-<circle cx="110" cy="108" r="4" fill="#111"/><circle cx="140" cy="108" r="4" fill="#111"/>
-${senior?`<path d="M100 90 Q125 74 150 90" stroke="#dfe4ea" stroke-width="5" fill="none"/>`:""}
-${senior?`<path d="M103 132 Q125 141 147 132" stroke="#7b4c38" stroke-width="3" fill="none"/>`:""}
-${a?`<path d="M68 177 Q125 151 182 177 L176 245 Q125 267 74 245Z" fill="${armorColor}" stroke="#d4dae2" stroke-width="4"/><path d="M125 168 L125 252" stroke="#e6e9ed" stroke-width="3" opacity=".7"/>`:""}
-${w?(w[0]==="bow"?`<path d="M196 178 Q230 230 196 285" fill="none" stroke="#9b6b39" stroke-width="6"/><line x1="196" y1="178" x2="196" y2="285" stroke="#e7d5b5" stroke-width="2"/>`:w[0]==="staff"?`<line x1="199" y1="155" x2="199" y2="305" stroke="#795537" stroke-width="8"/><circle cx="199" cy="151" r="16" fill="#66b9ff" opacity=".85" stroke="#bde4ff" stroke-width="3"/>`:w[0]==="axe"?`<line x1="196" y1="188" x2="196" y2="310" stroke="#795537" stroke-width="8"/><path d="M190 190 Q220 165 223 205 Q220 226 190 215Z" fill="url(#metal)" stroke="#cbd4df" stroke-width="3"/>`:`<line x1="197" y1="180" x2="197" y2="305" stroke="url(#metal)" stroke-width="10"/><path d="M190 183 L197 154 L204 183Z" fill="#eef5ff"/>`)}`:""}
-${acc&&acc[0]==="cape"?`<path d="M73 174 Q35 230 57 315 L87 292 L102 206Z" fill="#242c3a" stroke="#7d8ba0" stroke-width="3"/>`:""}
-${acc&&acc[0]==="ring"?`<circle cx="162" cy="276" r="7" fill="none" stroke="#e5b85e" stroke-width="3"/>`:""}
-</svg>`}
+function avatarSVG(){
+  const p=S.profile,e=S.equipment;
+  const w=I.find(x=>x[0]===e.weapon),a=I.find(x=>x[0]===e.armor),acc=I.find(x=>x[0]===e.accessory);
+  const female=p.gender==="female", senior=p.age==="senior", young=p.age==="young";
+  const headR=senior?38:young?34:36;
+  const bodyX=female?83:78, bodyW=female?84:94;
+  const armorColor=a?(a[0]==="gold"?"#b58a34":a[0]==="mage"?"#385b9a":a[0]==="hunter"?"#486348":"#737984"):"#303743";
+  const cloak=female?"#2a2030":"#1a2029";
+  let weapon="";
+  if(w){
+    if(w[0]==="bow") weapon=`<path d="M198 178 Q232 232 198 286" fill="none" stroke="#9b6b39" stroke-width="7"/><line x1="198" y1="178" x2="198" y2="286" stroke="#ead9bd" stroke-width="2"/>`;
+    else if(w[0]==="staff") weapon=`<line x1="200" y1="150" x2="200" y2="305" stroke="#795537" stroke-width="9"/><circle cx="200" cy="145" r="17" fill="#66b9ff" stroke="#bde4ff" stroke-width="3"/>`;
+    else if(w[0]==="axe") weapon=`<line x1="199" y1="185" x2="199" y2="307" stroke="#795537" stroke-width="9"/><path d="M191 187 Q224 164 225 204 Q221 226 191 216Z" fill="#dfe7f0" stroke="#aab7c6" stroke-width="3"/>`;
+    else weapon=`<line x1="198" y1="180" x2="198" y2="305" stroke="#e7edf4" stroke-width="11"/><path d="M190 181 L198 150 L206 181Z" fill="#fff"/>`;
+  }
+  const armor=a?`<path d="M68 177 Q125 151 182 177 L176 247 Q125 269 74 247Z" fill="${armorColor}" stroke="#d4dae2" stroke-width="4"/><path d="M125 168 L125 252" stroke="#eef2f5" stroke-width="3" opacity=".7"/>`:"";
+  const cape=acc&&acc[0]==="cape"?`<path d="M72 174 Q34 230 57 315 L88 291 L102 206Z" fill="#252e3d" stroke="#7d8ba0" stroke-width="3"/>`:"";
+  const ring=acc&&acc[0]==="ring"?`<circle cx="162" cy="276" r="7" fill="none" stroke="#e5b85e" stroke-width="3"/>`:"";
+  const wrinkles=senior?`<path d="M101 91 Q125 76 149 91" stroke="#e5e8ec" stroke-width="5" fill="none"/><path d="M104 132 Q125 141 146 132" stroke="#7b4c38" stroke-width="3" fill="none"/>`:"";
+  return `<svg class="avatar-svg" viewBox="0 0 250 360" xmlns="http://www.w3.org/2000/svg">
+  <defs><linearGradient id="metal" x1="0" x2="1"><stop stop-color="#9ca8b8"/><stop offset=".5" stop-color="#fff"/><stop offset="1" stop-color="#687483"/></linearGradient></defs>
+  <ellipse cx="125" cy="342" rx="80" ry="13" fill="#000" opacity=".55"/>
+  <path d="M78 160 Q125 132 172 160 L194 326 Q125 344 56 326Z" fill="${cloak}" stroke="#4d5969" stroke-width="4"/>
+  <path d="M${bodyX} 170 Q125 145 ${bodyX+bodyW} 170 L${bodyX+bodyW-5} 285 Q125 312 ${bodyX+5} 285Z" fill="#2a303b" stroke="#566070" stroke-width="4"/>
+  <circle cx="125" cy="${108-(young?2:0)}" r="${headR}" fill="${p.skin}" stroke="#f1c6a4" stroke-width="3"/>
+  <path d="M${125-headR-3} 106 Q125 ${55-(senior?3:0)} ${125+headR+3} 106 L${125+headR} 82 Q125 45 ${125-headR} 82Z" fill="${p.hair}"/>
+  <circle cx="110" cy="108" r="4" fill="#111"/><circle cx="140" cy="108" r="4" fill="#111"/>
+  ${wrinkles}${armor}${cape}${ring}${weapon}
+  </svg>`;
+}
 function render(){let l=level(),cur=S.xp%1000;document.getElementById("level").textContent=l;document.getElementById("xpText").textContent=cur+" / 1000 XP";document.getElementById("xpFill").style.width=cur/10+"%";document.getElementById("streak").textContent=S.streak;document.getElementById("force").textContent=S.stats.force;document.getElementById("end").textContent=S.stats.endurance;document.getElementById("speed").textContent=S.stats.speed;document.getElementById("intel").textContent=S.stats.intelligence;document.getElementById("vit").textContent=S.stats.vitality;document.getElementById("disc").textContent=S.stats.discipline;document.getElementById("homeAvatar").innerHTML=avatarSVG();document.getElementById("avatarEdit").innerHTML=avatarSVG();document.getElementById("skin").value=S.profile.skin;document.getElementById("hair").value=S.profile.hair;document.getElementById("genderPill").textContent=S.profile.gender==="female"?"♀ Femme":"♂ Homme";document.getElementById("agePill").textContent=S.profile.age==="young"?"Jeune":S.profile.age==="senior"?"Senior":"Adulte";let ac=activeClass();document.getElementById("className").textContent=ac?ac[2]:"Novice";let todayLogs=S.logs.filter(x=>x.date===day());document.getElementById("today").innerHTML=todayLogs.length?`${todayLogs.length} action(s) · <b>+${todayLogs.reduce((n,x)=>n+x.xp,0)} XP</b>`:"Aucune action aujourd'hui.";
 document.getElementById("classes").innerHTML=C.map(x=>`<div class="class ${DEV_MODE||S.stats[x[3]]>=x[4]?"":"locked"} ${ac&&ac[0]===x[0]?"active":""}"><b>${x[1]} ${x[2]}</b><div class="muted">${DEV_MODE||S.stats[x[3]]>=x[4]?"🔓 Débloqué":"🔒 "+x[3]+" "+x[4]+" requis"}</div></div>`).join("");
 for(const slot of ["weapon","armor","accessory"]){let id=slot==="weapon"?"weapons":slot==="armor"?"armors":"accessories";document.getElementById(id).innerHTML=I.filter(i=>i[3]===slot).map(i=>`<div class="equip ${S.equipment[slot]===i[0]?"sel":""}" onclick="equip('${i[0]}')"><div class="icon">${i[1]}</div><b>${i[2]}</b><div class="muted">${i[4]}</div><div class="small">${DEV_MODE?"🔓":"🔒"}</div></div>`).join("")}
