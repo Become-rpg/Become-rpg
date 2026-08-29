@@ -61,8 +61,8 @@ const armors=[["🛡️","Armure de guerre","legend"],["🥋","Armure légère",
 const accessories=[["💍","Anneau de Discipline","rare"],["👑","Couronne du Champion","legend"],["📿","Amulette mentale","epic"],["🧥","Cape de l'Ombre","epic"]];
 const classes=[["⚔️","Guerrier","Force & Corps"],["🏹","Chasseur","Endurance & Nature"],["🗡️","Assassin","Vitesse & Furtivité"],["🔮","Mage","Esprit & Contrôle"],["🛡️","Paladin","Équilibre & Dévouement"]];
 const stats={Force:28,Endurance:24,Discipline:26,Mental:22,Vitesse:21,Vitalité:25};
-let state=(()=>{try{return JSON.parse(localStorage.getItem("become_pixel_v4"))||null}catch(e){return null}})()||{gender:"male",age:"adult",skin:"#d69b70",hair:"#251b18",hairStyle:"short",eye:"#4b78b8",beard:"none",face:"2",weapon:0,clazz:0,dev:true};
-function save(){try{localStorage.setItem("become_pixel_v4",JSON.stringify(state))}catch(e){} render()}
+let state=(()=>{try{return JSON.parse(localStorage.getItem("become_pixel_v5"))||null}catch(e){return null}})()||{gender:"male",age:"adult",skin:"#d69b70",hair:"#251b18",hairStyle:"short",eye:"#4b78b8",beard:"none",face:"2",weapon:0,clazz:0,dev:true};
+function save(){try{localStorage.setItem("become_pixel_v5",JSON.stringify(state))}catch(e){} render()}
 function show(id){document.querySelectorAll(".page").forEach(p=>p.classList.toggle("active",p.id===id));document.querySelectorAll("[data-page]").forEach(b=>b.classList.toggle("active",b.dataset.page===id));scrollTo(0,0)}
 document.querySelectorAll("[data-page]").forEach(b=>b.addEventListener("click",()=>show(b.dataset.page)));
 document.querySelectorAll("[data-k]").forEach(b=>b.addEventListener("click",()=>{state[b.dataset.k]=b.dataset.v;save()}));
@@ -144,20 +144,21 @@ function renderItems(id,list,weaponList=false){
 function render(){
  const a=document.getElementById("avatarCanvas"),p=document.getElementById("portraitCanvas"),cu=document.getElementById("customCanvas");drawPixelAvatar(a);drawPixelAvatar(p);drawPixelAvatar(cu);
  document.getElementById("classesList").innerHTML=classes.map((x,i)=>`<button type="button" class="class ${i===state.clazz?"active":""}" data-class="${i}"><div class="icon">${x[0]}</div><div><b>${x[1]}</b><small>${x[2]}</small></div><em>${i===state.clazz?"✓":"🔓"}</em></button>`).join("");
- document.querySelectorAll("#classesList [data-class]").forEach(b=>b.addEventListener("click",()=>{state.clazz=Number(b.dataset.class);save()}));save()"><div class="icon">${x[0]}</div><div><b>${x[1]}</b><small>${x[2]}</small></div><em>${i===state.clazz?"✓":"🔓"}</em></button>`).join("");
+ document.querySelectorAll("#classesList [data-class]").forEach(b=>b.addEventListener("click",()=>{state.clazz=Number(b.dataset.class);save()}));
  document.getElementById("allClasses").innerHTML=classes.map((x,i)=>`<button type="button" class="class ${i===state.clazz?"active":""}" data-class="${i}"><div class="icon">${x[0]}</div><div><b>${x[1]}</b><small>${x[2]} · MODE DÉVELOPPEUR · DÉBLOQUÉE</small></div><em>${i===state.clazz?"✓":"Choisir"}</em></button>`).join("");
- document.querySelectorAll("#allClasses [data-class]").forEach(b=>b.addEventListener("click",()=>{state.clazz=Number(b.dataset.class);save()}));save()"><div class="icon">${x[0]}</div><div><b>${x[1]}</b><small>${x[2]} · débloqué en mode développeur</small></div><em>${i===state.clazz?"✓":"Choisir"}</em></button>`).join("");
+ document.querySelectorAll("#allClasses [data-class]").forEach(b=>b.addEventListener("click",()=>{state.clazz=Number(b.dataset.class);save()}));
  document.getElementById("quick").innerHTML=weapons.slice(0,6).map((x,i)=>`<button class="item ${x[2]} ${i===state.weapon?"selected":""}" onclick="state.weapon=${i};save()">${x[0]}</button>`).join("");
  renderItems("weapons",weapons,true);renderItems("armors",armors);renderItems("accessories",accessories);
  const dev=document.getElementById("devToggle");if(dev){dev.textContent=state.dev?"DEV : ON":"DEV : OFF";dev.onclick=()=>{state.dev=!state.dev;save()}}
  const s=Object.entries(stats).map(([k,v])=>`<div class="stat"><span>${k.toUpperCase()}</span><b>${v}</b><div class="bar"><i style="width:${v}%"></i></div></div>`).join("");document.getElementById("miniStats").innerHTML=s;document.getElementById("allStats").innerHTML=s;
  document.getElementById("classText").textContent=classes[state.clazz][1]+" · Niveau 13";document.getElementById("heroClass").textContent=classes[state.clazz][1].toUpperCase()+" · "+classes[state.clazz][2].toUpperCase();document.getElementById("weaponIcon").textContent=weapons[state.weapon][0];document.getElementById("weaponName").textContent=weapons[state.weapon][1];document.getElementById("weaponInfo").textContent=(weapons[state.weapon][2]==="legend"?"🟠 Légendaire":weapons[state.weapon][2]==="epic"?"🟣 Épique":weapons[state.weapon][2]==="rare"?"🔵 Rare":"⚪ Commun")+" · Équipé";
- document.querySelectorAll("[data-k]").forEach(old=>{const b=old.cloneNode(true);old.replaceWith(b);b.classList.toggle("active",String(state[b.dataset.k])===b.dataset.v);b.addEventListener("click",()=>{state[b.dataset.k]=b.dataset.v;save()})});
+ document.querySelectorAll("[data-k]").forEach(b=>b.classList.toggle("active",String(state[b.dataset.k])===b.dataset.v));
  const skin=["#f1c6a4","#d69b70","#a96d48","#6b422e","#42291e"],hc=["#111","#251b18","#b77a32","#8a3f2d","#d4d7dc"],ec=["#4b78b8","#4f9b72","#b88b35","#333","#765aa8"];
  document.getElementById("skin").innerHTML=skin.map(v=>`<button class="swatch ${state.skin===v?"active":""}" style="background:${v}" onclick="state.skin='${v}';save()"></button>`).join("");
  document.getElementById("hair").innerHTML=hc.map(v=>`<button class="swatch ${state.hair===v?"active":""}" style="background:${v}" onclick="state.hair='${v}';save()"></button>`).join("");
  document.getElementById("eyes").innerHTML=ec.map(v=>`<button class="swatch ${state.eye===v?"active":""}" style="background:${v}" onclick="state.eye='${v}';save()"></button>`).join("");
 }
+document.addEventListener("click",e=>{const b=e.target.closest("[data-k]");if(!b)return;state[b.dataset.k]=b.dataset.v;save()});
 render();
 if("serviceWorker"in navigator)navigator.serviceWorker.register("sw.js");
 </script>
