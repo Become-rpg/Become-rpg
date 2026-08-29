@@ -1,1 +1,8 @@
-{"name": "BECOME", "short_name": "BECOME", "start_url": "./", "display": "standalone", "background_color": "#090c11", "theme_color": "#090c11"}
+{
+  "name": "BECOME",
+  "short_name": "BECOME",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#090c11",
+  "theme_color": "#090c11"
+}
