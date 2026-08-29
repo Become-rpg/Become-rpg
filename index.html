@@ -3,223 +3,64 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#080a0f">
+<meta name="theme-color" content="#07090d">
+<link rel="manifest" href="manifest.webmanifest">
 <title>BECOME</title>
 <style>
-:root{
-  --bg:#080a0f;--panel:#0e141c;--line:#293744;
-  --gold:#e7bd5c;--muted:#8d98a3;
-}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:#eee9df;font-family:system-ui,sans-serif}
-button{font:inherit}
-header{
-  height:105px;padding:16px 22px;border-bottom:1px solid var(--line);
-  display:flex;align-items:center;background:#080a0f
-}
-.logo{font:800 30px Georgia,serif;letter-spacing:4px;color:#efd184}
-.motto{font-size:9px;letter-spacing:1px;color:var(--muted)}
-.level{
-  margin-left:auto;width:54px;height:54px;border:1px solid var(--gold);
-  border-radius:50%;display:grid;place-items:center;color:var(--gold);font-weight:900
-}
-main{max-width:700px;margin:auto;padding:12px 10px 90px}
-.panel{
-  border:1px solid var(--line);border-radius:11px;
-  background:linear-gradient(145deg,#121b24,#090e14);overflow:hidden
-}
-.title{padding:14px 16px;border-bottom:1px solid var(--line);font:15px Georgia,serif}
-.preview{
-  height:520px;display:grid;place-items:center;
-  background:radial-gradient(circle at 50% 35%,#243746,#0a1017 72%)
-}
-.avatar{width:300px;height:450px;image-rendering:pixelated}
-.controls{padding:15px}
-.label{font-size:9px;letter-spacing:1px;color:var(--muted);margin:0 0 8px}
-.choices{display:flex;gap:8px}
-.choice{
-  flex:1;padding:12px;border:1px solid var(--line);border-radius:8px;
-  background:#0b1219;color:#ddd
-}
-.choice.active{
-  border-color:var(--gold);background:#211b0e;color:var(--gold)
-}
-.info{
-  margin-top:12px;padding:11px;border:1px solid var(--line);
-  border-radius:8px;background:#0b1219;font-size:10px;color:var(--muted)
-}
-.nav{
-  position:fixed;bottom:0;left:0;right:0;height:66px;
-  background:#080c12f5;border-top:1px solid var(--line);
-  display:flex;z-index:20
-}
-.nav button{
-  flex:1;background:none;border:0;color:#858f9a;font-size:8px
-}
-.nav button strong{display:block;font-size:20px;font-weight:400}
-.nav button.active{color:var(--gold);box-shadow:inset 0 2px var(--gold)}
+:root{--bg:#07090d;--line:#293542;--gold:#e8bd59;--muted:#8b96a1}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:#eee9df;font-family:system-ui,sans-serif}
+header{height:105px;padding:16px 22px;border-bottom:1px solid var(--line);display:flex;align-items:center;background:#07090d}
+.logo{font:800 30px Georgia,serif;letter-spacing:4px;color:#efd184}.motto{font-size:9px;letter-spacing:1px;color:var(--muted)}
+.level{margin-left:auto;width:54px;height:54px;border:1px solid var(--gold);border-radius:50%;display:grid;place-items:center;color:var(--gold);font-weight:900}
+main{max-width:700px;margin:auto;padding:12px 10px 90px}.page{display:none}.page.active{display:block}
+.panel{border:1px solid var(--line);border-radius:11px;overflow:hidden;background:#0d141c}
+.title{padding:13px 15px;border-bottom:1px solid var(--line);font:15px Georgia,serif}
+.hero{height:calc(100vh - 185px);min-height:590px;position:relative;display:grid;place-items:center;background:radial-gradient(circle at 50% 35%,#1c303e,#080e14 74%)}
+.hero img{width:100%;height:100%;object-fit:contain;image-rendering:auto}
+.identity{position:absolute;left:18px;bottom:18px;background:#070a0ee8;border:1px solid var(--line);border-radius:8px;padding:9px 13px}
+.identity b{font:25px Georgia,serif}.identity small{display:block;color:#aab4bd;font-size:9px;margin-top:2px}
+.pad{padding:14px}.choice{width:100%;padding:14px;border:1px solid var(--line);border-radius:9px;background:#0a1118;color:#eee;text-align:left;margin-bottom:8px}
+.choice.active{border-color:var(--gold);background:#211a0c}.choice b{font:16px Georgia,serif}.choice small{display:block;color:var(--muted);font-size:9px;margin-top:3px}
+.preview{background:#0a1118;border:1px solid var(--line);border-radius:9px;padding:8px;margin-bottom:12px}.preview img{width:100%;height:430px;object-fit:contain}
+.note{color:var(--muted);font-size:10px;line-height:1.5;margin:5px 0 12px}
+.nav{position:fixed;z-index:20;left:0;right:0;bottom:0;height:68px;background:#080c12f5;border-top:1px solid var(--line);display:flex}
+.nav button{flex:1;background:none;border:0;color:#818c98;font-size:8px}.nav strong{display:block;font-size:21px;font-weight:400}.nav .active{color:var(--gold);box-shadow:inset 0 2px var(--gold)}
+@media(min-width:800px){.nav{max-width:700px;margin:auto}.hero{height:calc(100vh - 165px)}}
 </style>
 </head>
-
 <body>
-<header>
-  <div>
-    <div class="logo">BECOME</div>
-    <div class="motto">DISCIPLINE CREATES FREEDOM</div>
-  </div>
-  <div class="level">13</div>
-</header>
-
+<header><div><div class="logo">BECOME</div><div class="motto">DISCIPLINE CREATES FREEDOM</div></div><div class="level">13</div></header>
 <main>
-  <div class="panel">
-    <div class="title">✦ APPARENCE</div>
-
-    <div class="preview">
-      <svg id="avatar" class="avatar" viewBox="0 0 160 220"
-           xmlns="http://www.w3.org/2000/svg"></svg>
-    </div>
-
-    <div class="controls">
-      <div class="label">PERSONNAGE</div>
-
-      <div class="choices">
-        <button id="maleBtn" class="choice active">♂ HOMME</button>
-        <button id="femaleBtn" class="choice">♀ FEMME</button>
-      </div>
-
-      <div class="info">
-        Sexe sélectionné : <b id="genderText">Homme</b>
-      </div>
-    </div>
-  </div>
+<section id="avatar" class="page active"><div class="panel hero"><img id="hero" src="assets/avatar_male.png" alt="Avatar"><div class="identity"><b>MacArthur</b><small>MAGE · ESPRIT & CONTRÔLE</small></div></div></section>
+<section id="appearance" class="page"><div class="panel"><div class="title">✦ APPARENCE</div><div class="pad"><div class="preview"><img id="preview" src="assets/avatar_male.png"></div><div class="note">Pour cette étape, les deux avatars sont exactement ceux du visuel de référence : aucun redessin, aucune approximation.</div><button class="choice active" data-gender="male"><b>♂ Homme</b><small>Avatar masculin de référence</small></button><button class="choice" data-gender="female"><b>♀ Femme</b><small>Avatar féminin de référence</small></button></div></div></section>
+<section id="classes" class="page"><div class="panel"><div class="title">♞ CLASSES</div><div class="pad"><div class="note">Les classes seront ajoutées à l'étape suivante. On conserve d'abord le personnage de base exactement.</div></div></div></section>
+<section id="equip" class="page"><div class="panel"><div class="title">⚔ ÉQUIPEMENT</div><div class="pad"><div class="note">Les équipements seront ajoutés après validation des deux personnages de base.</div></div></div></section>
+<section id="plan" class="page"><div class="panel"><div class="title">▣ PLAN</div><div class="pad">Plan d'entraînement</div></div></section>
+<section id="stats" class="page"><div class="panel"><div class="title">▥ STATS</div><div class="pad">Force · 28<br>Endurance · 24<br>Vitesse · 21<br>Intelligence · 22</div></div></section>
 </main>
-
 <nav class="nav">
-  <button class="active"><strong>♙</strong>Avatar</button>
-  <button><strong>✦</strong>Apparence</button>
-  <button><strong>♞</strong>Classes</button>
-  <button><strong>⚔</strong>Équip.</button>
-  <button><strong>▣</strong>Plan</button>
-  <button><strong>▥</strong>Stats</button>
+<button class="active" data-page="avatar"><strong>♙</strong>Avatar</button>
+<button data-page="appearance"><strong>✦</strong>Apparence</button>
+<button data-page="classes"><strong>♞</strong>Classes</button>
+<button data-page="equip"><strong>⚔</strong>Équip.</button>
+<button data-page="plan"><strong>▣</strong>Plan</button>
+<button data-page="stats"><strong>▥</strong>Stats</button>
 </nav>
-
 <script>
-let gender = localStorage.getItem("become_gender") || "male";
-
-const maleBtn = document.getElementById("maleBtn");
-const femaleBtn = document.getElementById("femaleBtn");
-const genderText = document.getElementById("genderText");
-const avatar = document.getElementById("avatar");
-
-function R(x,y,w,h,c){
-  return `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${c}"/>`;
+const A={male:"assets/avatar_male.png",female:"assets/avatar_female.png"};
+let gender=localStorage.getItem("become_gender")||"male";
+function render(){
+ document.getElementById("hero").src=A[gender];
+ document.getElementById("preview").src=A[gender];
+ document.querySelectorAll("[data-gender]").forEach(b=>b.classList.toggle("active",b.dataset.gender===gender));
 }
-
-function drawAvatar(){
-  const female = gender === "female";
-  const skin = "#d69b70";
-  const hair = "#251b18";
-  const eye = "#4b78b8";
-
-  let s = "";
-
-  // Ombre
-  s += `<ellipse cx="80" cy="207" rx="42" ry="5" fill="#05070a"/>`;
-
-  // Jambes
-  if(female){
-    s += R(57,157,19,43,"#303946");
-    s += R(84,157,19,43,"#303946");
-  }else{
-    s += R(51,157,25,43,"#303946");
-    s += R(84,157,25,43,"#303946");
-  }
-
-  // Bottes
-  s += R(52,197,25,7,"#161b22");
-  s += R(84,197,26,7,"#161b22");
-
-  // Corps
-  if(female){
-    s += R(47,105,66,57,"#596474");
-    s += R(42,115,76,43,"#596474");
-    s += R(55,109,50,7,"#737f8e");
-  }else{
-    s += R(42,105,76,57,"#596474");
-    s += R(36,117,88,43,"#596474");
-    s += R(53,109,54,7,"#737f8e");
-  }
-
-  // Bras
-  s += female ? R(37,117,11,40,"#596474") : R(32,117,16,43,"#596474");
-  s += female ? R(112,117,11,40,"#596474") : R(112,117,16,43,"#596474");
-
-  // Cou
-  s += R(73,91,14,17,skin);
-
-  // Tête : plus étroite pour la variante femme
-  const hw = female ? 26 : 30;
-  const hx = 80-hw;
-
-  s += R(hx,59,hw*2,35,skin);
-  s += R(hx-3,70,5,12,skin);
-  s += R(hx+hw-2,70,5,12,skin);
-
-  // Cheveux
-  if(female){
-    s += R(54,51,52,12,hair);
-    s += R(51,58,9,31,hair);
-    s += R(100,58,9,31,hair);
-    s += R(60,47,40,8,hair);
-  }else{
-    s += R(50,53,60,13,hair);
-    s += R(55,49,42,8,hair);
-  }
-
-  // Yeux
-  s += R(female?61:60,72,5,5,eye);
-  s += R(female?94:92,72,5,5,eye);
-
-  // Nez
-  s += R(78,78,4,7,"#bd805c");
-
-  // Bouche
-  s += R(female?69:68,88,22,3,"#a85c57");
-
-  // Détails vêtements
-  s += R(76,109,6,45,"#b9c1ca");
-  s += R(55,132,50,5,"#798492");
-  s += R(45,149,70,5,"#151b22");
-  s += R(77,147,7,9,"#e0b64e");
-
-  // Petite différence de silhouette
-  if(female){
-    s += R(48,154,64,5,"#4b5664");
-  }
-
-  // Épée : même équipement, indépendant du sexe
-  s += R(123,111,5,82,"#e8edf3");
-  s += R(119,108,13,5,"#9f6c32");
-  s += R(121,101,9,10,"#ffffff");
-
-  avatar.innerHTML = s;
-}
-
-function setGender(value){
-  gender = value;
-  localStorage.setItem("become_gender", gender);
-
-  maleBtn.classList.toggle("active", gender==="male");
-  femaleBtn.classList.toggle("active", gender==="female");
-  genderText.textContent = gender==="male" ? "Homme" : "Femme";
-
-  drawAvatar();
-}
-
-maleBtn.addEventListener("click",()=>setGender("male"));
-femaleBtn.addEventListener("click",()=>setGender("female"));
-
-setGender(gender);
+document.addEventListener("click",e=>{
+ const p=e.target.closest("[data-page]");
+ if(p){document.querySelectorAll(".page").forEach(x=>x.classList.remove("active"));document.getElementById(p.dataset.page).classList.add("active");document.querySelectorAll(".nav button").forEach(x=>x.classList.toggle("active",x.dataset.page===p.dataset.page));scrollTo(0,0);return}
+ const g=e.target.closest("[data-gender]");
+ if(g){gender=g.dataset.gender;localStorage.setItem("become_gender",gender);render();}
+});
+render();
 </script>
 </body>
 </html>
