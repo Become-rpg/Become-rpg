@@ -26,7 +26,7 @@ main{max-width:700px;margin:auto;padding:10px 10px 78px}.page{display:none}.page
 <header><div><div class="brand">BECOME</div><div class="motto">DISCIPLINE CREATES FREEDOM</div></div><div class="level">13</div></header>
 <main>
 <section id="avatar" class="page active">
-<div class="panel home"><div class="homeLevel">NIVEAU 13 · 2 450 / 5 000 XP</div><div class="stage"><svg id="mainAvatar" class="avatar" viewBox="0 0 160 220"></svg></div><div class="identity"><b>MacArthur</b><small id="homeClass">GUERRIER · FORCE & CORPS</small></div></div>
+<div class="panel home"><div class="stage"><svg id="mainAvatar" class="avatar" viewBox="0 0 160 220"></svg></div><div class="identity"><b>MacArthur</b><small id="homeClass">GUERRIER · FORCE & CORPS</small></div></div>
 </section>
 
 <section id="custom" class="page"><div class="panel"><div class="panelTitle">✦ APPARENCE</div><div class="preview"><svg id="customAvatar" class="avatar" viewBox="0 0 160 220"></svg></div><div class="section">
@@ -64,36 +64,109 @@ document.addEventListener("click",e=>{let b=e.target.closest("[data-page]");if(b
 
 function R(x,y,w,h,c){return `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${c}"/>`}
 function avatar(){
- let s="";const skin=state.skin,h=state.hair,e=state.eye,cl=state.clazz,young=state.age==="young",senior=state.age==="senior";
- const armor=[["#414c5b","#aeb8c4"],["#4b654e","#90a879"],["#202733","#6a7482"],["#4d3c70","#a98ce0"],["#626e79","#e5c66b"]][cl];
- s+=R(48,196,28,7,"#0a0e13")+R(84,196,29,7,"#0a0e13");
- s+=R(42,103,76,64,armor[0])+R(35,118,15,49,armor[0])+R(110,118,15,49,armor[0]);
- if(cl===0)s+=R(48,108,64,57,"#4c5564")+R(76,111,5,50,"#c0c7cf")+R(52,132,56,5,"#818b98");
- if(cl===1)s+=R(48,108,64,57,"#506a51")+R(56,115,48,5,"#91a979")+R(59,128,42,4,"#394b3a");
- if(cl===2)s+=R(48,108,64,57,"#252e39")+R(58,113,44,4,"#596574")+R(63,130,34,4,"#151b23");
- if(cl===3)s+=R(48,108,64,57,"#514174")+R(56,114,48,5,"#a184df")+R(60,128,40,4,"#6d55a1");
- if(cl===4)s+=R(48,108,64,57,"#69737e")+R(55,113,50,5,"#e0bf65")+R(75,116,10,39,"#404750");
- s+=R(53,158,22,39,cl===1?"#40523f":"#303946")+R(85,158,22,39,cl===3?"#29233d":"#303946");
- s+=R(72,94,16,14,skin);const hw=young?28:senior?31:30;s+=R(80-hw,60,hw*2,34,skin)+R(80-hw-4,71,5,12,skin)+R(80+hw-1,71,5,12,skin);
- if(state.hairStyle==="long")s+=R(80-hw-2,53,hw*2+4,18,h)+R(80-hw-2,65,9,32,h)+R(80+hw-7,65,9,32,h);
- else if(state.hairStyle==="curly"){for(let x=51;x<110;x+=9)s+=R(x,51+(x%18),10,10,h)}
- else if(state.hairStyle==="medium")s+=R(80-hw,53,hw*2,15,h)+R(80-hw,61,8,18,h)+R(80+hw-8,61,8,18,h);
- else s+=R(80-hw,54,hw*2,12,h)+R(80-hw+5,49,hw-5,9,h);
- if(cl===3)s+=R(48,51,64,7,"#171225")+R(53,47,54,7,"#261a40");
- if(cl===4)s+=R(58,47,44,5,"#c8a94f")+R(64,42,32,5,"#e2c46c");
- if(state.face==="1")s+=R(61,71,7,4,e)+R(92,71,7,4,e)+R(70,87,20,3,"#a95f55");
- else if(state.face==="3")s+=R(64,72,4,6,e)+R(93,72,4,6,e)+R(68,88,24,2,"#a95f55");
- else if(state.face==="4")s+=R(61,73,7,5,e)+R(92,73,7,5,e)+R(70,86,20,4,"#a95f55");
- else s+=R(63,73,5,5,e)+R(92,73,5,5,e)+R(69,87,22,3,"#a95f55");
- if(state.beard!=="none")s+=R(66,88,28,state.beard==="long"?11:7,h);
- if(senior)s+=R(63,67,5,2,"#777")+R(92,67,5,2,"#777");
- if(cl===1||state.weapon===3)s+=R(122,117,3,70,"#8a623b")+R(126,115,3,70,"#e5d6b7");
- else if(cl===3||state.weapon===4)s+=R(121,95,4,86,"#765437")+R(118,90,10,10,cl===3?"#b17aff":"#66b9ff");
- else if(state.weapon===1||state.weapon===2)s+=R(121,120,5,72,"#805c3b")+R(126,115,16,25,"#dce4ea");
- else if(cl===2)s+=R(119,110,3,70,"#dfe7ef")+R(126,110,3,70,"#dfe7ef");
- else s+=R(123,111,5,82,"#eaf0f7")+R(119,108,13,5,"#9f6c32")+R(121,101,9,10,"#fff");
- s+=R(45,148,70,5,"#171e26")+R(78,146,5,9,cl===4?"#e6c75d":"#e4b64f");
- return s;
+ const skin=state.skin,h=state.hair,e=state.eye,cl=state.clazz,young=state.age==="young",senior=state.age==="senior";
+ const pal=[
+  {coat:"#303b49",light:"#5b6776",dark:"#1b232d",metal:"#c7ced5"},
+  {coat:"#3b573d",light:"#708c62",dark:"#1c2b20",metal:"#b7c59e"},
+  {coat:"#202631",light:"#4b5664",dark:"#10151c",metal:"#aeb8c4"},
+  {coat:"#493765",light:"#8062aa",dark:"#241936",metal:"#c4a8ee"},
+  {coat:"#4a4f55",light:"#8c949b",dark:"#252a30",metal:"#e0c46d"}
+ ][cl];
+ let s="";
+ const R=(x,y,w,hh,c)=>`<rect x="${x}" y="${y}" width="${w}" height="${hh}" fill="${c}"/>`;
+ const P=(pts,c)=>`<polygon points="${pts}" fill="${c}"/>`;
+
+ // shadow
+ s+=`<ellipse cx="80" cy="208" rx="38" ry="5" fill="#020407" opacity=".8"/>`;
+
+ // legs: boots, pants, separated silhouette
+ s+=P("51,153 76,153 76,193 70,202 49,202 46,193","#171d25");
+ s+=P("84,153 109,153 113,193 110,202 90,202 84,193","#171d25");
+ s+=R(48,188,25,10,cl===1?"#28372a":"#252d38")+R(88,188,25,10,cl===1?"#28372a":"#252d38");
+ s+=R(45,198,31,7,"#0d1218")+R(88,198,31,7,"#0d1218");
+
+ // back cape / class silhouette
+ if(cl===1)s+=P("43,105 34,116 31,160 43,168 51,157 49,118","#263d2a");
+ if(cl===2)s+=P("44,106 35,119 36,166 49,158 51,116","#151b23");
+ if(cl===3)s+=P("43,105 34,120 38,169 52,157 50,115","#332546");
+ if(cl===4)s+=P("43,105 35,117 34,163 48,158 51,116","#3a3e43");
+
+ // torso outer outline and shoulders
+ s+=P("48,101 68,96 92,96 112,101 119,116 114,161 103,169 57,169 46,161 41,116","#10151b");
+ s+=P("49,104 67,99 93,99 111,104 115,117 110,158 102,164 58,164 50,158 45,117",pal.coat);
+ // tunic lighting
+ s+=P("57,106 68,102 68,158 58,158 52,154 50,119",pal.light);
+ s+=P("92,102 107,106 111,119 106,158 96,161",pal.dark);
+ // collar
+ s+=P("68,100 80,110 92,100 87,113 80,118 73,113",pal.metal);
+ // center seam
+ s+=R(78,112,4,47,pal.metal);
+ // belt
+ s+=R(49,146,62,7,"#10161c")+R(75,144,10,11,"#d2a844")+R(78,146,4,7,"#f1ce6a");
+ // arm plates
+ s+=P("42,115 51,112 57,120 53,157 46,163 39,156",pal.dark);
+ s+=P("109,112 118,116 122,156 114,163 107,157 103,120",pal.dark);
+ // hands
+ s+=R(38,155,13,10,skin)+R(109,155,13,10,skin);
+
+ // neck
+ s+=R(73,91,14,16,skin);
+
+ // head outline, slightly asymmetric / RPG sprite profile
+ const hw=young?27:senior?29:28;
+ s+=P(`${80-hw},60  ${80-hw+5},54  91,54  108,61  ${80+hw},68  ${80+hw},91  91,99  67,99  ${80-hw},91`, "#111419");
+ s+=P(`${80-hw+2},63  64,58  87,56  105,62  ${80+hw-2},70  ${80+hw-2},88  91,96  67,96  ${80-hw+2},89`, skin);
+ // ears
+ s+=R(50,71,6,13,skin)+R(104,70,6,13,skin);
+ // hair cap with jagged pixel silhouette
+ if(state.hairStyle==="long"){
+   s+=P("52,69 52,56 60,48 72,45 91,46 104,53 108,65 105,79 99,69 96,57 80,53 64,58 59,72","#171314");
+   s+=R(53,69,7,30,h)+R(101,66,7,34,h);
+ }else if(state.hairStyle==="curly"){
+   s+=P("52,66 54,54 63,47 72,46 80,43 89,46 99,48 106,57 107,68 99,64 95,56 83,53 69,55 61,64 58,73",h);
+   for(let x=56;x<103;x+=9)s+=R(x,48+(x%3),8,8,h);
+ }else if(state.hairStyle==="medium"){
+   s+=P("52,67 54,55 64,48 77,45 92,48 103,55 107,68 101,74 97,60 85,55 69,57 60,67 58,77",h);
+ }else{
+   s+=P("53,66 54,55 65,47 79,45 92,48 102,54 106,65 100,69 96,57 83,53 69,55 60,64 58,72",h);
+ }
+ // fringe
+ s+=P("58,62 65,53 78,50 91,54 99,62 91,60 84,66 76,57 68,65","#151214");
+
+ // eyes / eyebrows / nose / mouth, pixel-art face
+ const eyeY=young?72:73;
+ s+=R(63,eyeY-2,7,2,"#3a2522")+R(91,eyeY-2,7,2,"#3a2522");
+ s+=R(64,eyeY,5,5,e)+R(92,eyeY,5,5,e);
+ s+=R(78,eyeY+5,4,8,"#b47757");
+ if(state.face==="1")s+=R(68,88,22,3,"#8d4e4c");
+ else if(state.face==="2")s+=R(70,89,20,3,"#a85652");
+ else if(state.face==="3")s+=R(67,87,25,2,"#9a5550");
+ else s+=R(73,88,14,4,"#a95c56");
+ if(state.beard!=="none"){
+   if(state.beard==="short")s+=P("67,87 73,93 87,93 94,87 91,97 70,97","#241a18");
+   else s+=P("65,86 72,92 88,92 95,86 95,97 90,101 70,101 65,96",h);
+ }
+ if(senior){s+=R(63,67,6,2,"#777")+R(91,67,6,2,"#777");}
+
+ // weapon changes with class/equipment
+ if(cl===1 || state.weapon===3){ // bow
+   s+=P("123,112 126,115 126,186 123,190 120,186 120,115","#7d542f");
+   s+=R(126,115,2,72,"#dfd1b2");
+ }else if(cl===3 || state.weapon===4){ // staff
+   s+=R(123,108,4,82,"#765033");
+   s+=R(119,101,12,12,cl===3?"#8d5bd1":"#63a8dc");
+   s+=R(122,104,6,6,"#e1d4ff");
+ }else if(state.weapon===1||state.weapon===2){ // axe
+   s+=R(123,121,5,69,"#765033");s+=P("126,116 140,111 139,135 128,131","#c5cbd0");
+ }else if(cl===2){ // daggers
+   s+=P("120,112 124,114 119,172 116,168","#e8eef2");
+   s+=P("127,112 131,114 134,169 130,172","#d4dce3");
+ }else{ // sword
+   s+=R(124,112,5,79,"#e9eef2");
+   s+=P("121,110 132,110 129,104 124,104","#fff");
+   s+=R(119,109,15,5,"#9c6a32");
+ }
+ return `<g shape-rendering="crispEdges">${s}</g>`;
 }
 function render(){
  document.getElementById("mainAvatar").innerHTML=avatar();document.getElementById("customAvatar").innerHTML=avatar();
