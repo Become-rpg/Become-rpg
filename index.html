@@ -1,13 +1,91 @@
-<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#07090d"><title>BECOME</title><link rel="stylesheet" href="style.css"></head>
-<body><header><div><div class="logo">BECOME</div><div class="motto">DISCIPLINE CREATES FREEDOM</div></div><div class="level">13</div></header>
-<main><section id="avatar" class="page active"><div class="hero"><div id="character" class="character"></div><div class="identity"><b>MacArthur</b><small>MAGE · ESPRIT & CONTRÔLE</small></div></div></section>
-<section id="appearance" class="page"><div class="panel"><div class="title">✦ APPARENCE</div><div class="pad"><div class="preview"><div id="preview" class="character"></div></div>
-<div class="group"><h3>Sexe</h3><div class="row"><button data-sex="male">♂ Homme</button><button data-sex="female">♀ Femme</button></div></div>
-<div class="group"><h3>Cheveux</h3><div id="hairChoices" class="grid"></div></div>
-<div id="beardGroup" class="group"><h3>Barbe</h3><div id="beardChoices" class="grid"></div></div></div></div></section>
-<section id="classes" class="page"><div class="panel"><div class="title">♞ CLASSES</div><div class="pad">Mode développeur : toutes les classes seront disponibles.</div></div></section>
-<section id="equip" class="page"><div class="panel"><div class="title">⚔ ÉQUIPEMENT</div><div class="pad">À venir — aucune modification ici.</div></div></section>
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#07090d">
+<link rel="manifest" href="manifest.webmanifest">
+<title>BECOME</title>
+<style>
+:root{--bg:#07090d;--panel:#0d141c;--line:#293642;--gold:#e7bd59;--muted:#8b96a1}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:#eee9df;font-family:system-ui,sans-serif}
+header{height:105px;padding:16px 22px;border-bottom:1px solid var(--line);display:flex;align-items:center;background:#07090d}
+.logo{font:800 30px Georgia,serif;letter-spacing:4px;color:#efd184}.motto{font-size:9px;letter-spacing:1px;color:var(--muted)}
+.level{margin-left:auto;width:54px;height:54px;border:1px solid var(--gold);border-radius:50%;display:grid;place-items:center;color:var(--gold);font-weight:900}
+main{max-width:700px;margin:auto;padding:12px 10px 90px}.page{display:none}.page.active{display:block}
+.panel{border:1px solid var(--line);border-radius:11px;overflow:hidden;background:#0d141c}
+.title{padding:13px 15px;border-bottom:1px solid var(--line);font:15px Georgia,serif}
+.hero{height:calc(100vh - 185px);min-height:590px;position:relative;overflow:hidden;background:#07090d}
+.hero .sprite{position:absolute;inset:0;background-image:url("assets/avatars.png");background-repeat:no-repeat;background-size:200% 100%;background-position:0 50%;background-color:#07090d}
+.identity{position:absolute;left:18px;bottom:18px;background:#070a0ee8;border:1px solid var(--line);border-radius:8px;padding:9px 13px}
+.identity b{font:25px Georgia,serif}.identity small{display:block;color:#aab4bd;font-size:9px;margin-top:2px}
+.pad{padding:14px}.preview{background:#07090d;border:1px solid var(--line);border-radius:9px;padding:8px;margin-bottom:12px;overflow:hidden;height:440px}
+.preview .sprite{width:100%;height:100%;background-image:url("assets/avatars.png");background-repeat:no-repeat;background-size:200% 100%;background-position:0 50%}
+.note{color:var(--muted);font-size:10px;line-height:1.5;margin:5px 0 12px}
+.choice{width:100%;padding:14px;border:1px solid var(--line);border-radius:9px;background:#0a1118;color:#eee;text-align:left;margin-bottom:8px}
+.choice.active{border-color:var(--gold);background:#211a0c}.choice b{font:16px Georgia,serif}.choice small{display:block;color:var(--muted);font-size:9px;margin-top:3px}
+.nav{position:fixed;z-index:20;left:0;right:0;bottom:0;height:68px;background:#080c12f5;border-top:1px solid var(--line);display:flex}
+.nav button{flex:1;background:none;border:0;color:#818c98;font-size:8px}.nav strong{display:block;font-size:21px;font-weight:400}.nav .active{color:var(--gold);box-shadow:inset 0 2px var(--gold)}
+@media(min-width:800px){.nav{max-width:700px;margin:auto}.hero{height:calc(100vh - 165px)}}
+</style>
+</head>
+<body>
+<header><div><div class="logo">BECOME</div><div class="motto">DISCIPLINE CREATES FREEDOM</div></div><div class="level">13</div></header>
+<main>
+<section id="avatar" class="page active">
+<div class="panel hero">
+<div id="heroSprite" class="sprite"></div>
+<div class="identity"><b>MacArthur</b><small>MAGE · ESPRIT & CONTRÔLE</small></div>
+</div>
+</section>
+
+<section id="appearance" class="page">
+<div class="panel">
+<div class="title">✦ APPARENCE</div>
+<div class="pad">
+<div class="preview"><div id="previewSprite" class="sprite"></div></div>
+<div class="note">Étape 1 : uniquement Homme / Femme. Un seul fichier image est utilisé. Il doit être placé dans le dossier <b>assets</b>.</div>
+<button class="choice active" data-gender="male"><b>♂ Homme</b><small>Avatar masculin</small></button>
+<button class="choice" data-gender="female"><b>♀ Femme</b><small>Avatar féminin</small></button>
+</div>
+</div>
+</section>
+
+<section id="classes" class="page"><div class="panel"><div class="title">♞ CLASSES</div><div class="pad">On ajoutera les classes après validation des avatars.</div></div></section>
+<section id="equip" class="page"><div class="panel"><div class="title">⚔ ÉQUIPEMENT</div><div class="pad">On ajoutera l'équipement après validation des avatars.</div></div></section>
 <section id="plan" class="page"><div class="panel"><div class="title">▣ PLAN</div><div class="pad">Plan d'entraînement</div></div></section>
-<section id="stats" class="page"><div class="panel"><div class="title">▥ STATS</div><div class="pad">Force · 28<br>Endurance · 24<br>Vitesse · 21<br>Intelligence · 22</div></div></section></main>
-<nav class="nav"><button class="active" data-page="avatar"><strong>♙</strong>Avatar</button><button data-page="appearance"><strong>✦</strong>Apparence</button><button data-page="classes"><strong>♞</strong>Classes</button><button data-page="equip"><strong>⚔</strong>Équip.</button><button data-page="plan"><strong>▣</strong>Plan</button><button data-page="stats"><strong>▥</strong>Stats</button></nav>
-<script src="app.js"></script></body></html>
+<section id="stats" class="page"><div class="panel"><div class="title">▥ STATS</div><div class="pad">Force · 28<br>Endurance · 24<br>Vitesse · 21<br>Intelligence · 22</div></div></section>
+</main>
+<nav class="nav">
+<button class="active" data-page="avatar"><strong>♙</strong>Avatar</button>
+<button data-page="appearance"><strong>✦</strong>Apparence</button>
+<button data-page="classes"><strong>♞</strong>Classes</button>
+<button data-page="equip"><strong>⚔</strong>Équip.</button>
+<button data-page="plan"><strong>▣</strong>Plan</button>
+<button data-page="stats"><strong>▥</strong>Stats</button>
+</nav>
+<script>
+let gender=localStorage.getItem("become_gender_v3")||"male";
+function setSprite(el){
+  el.style.backgroundPosition = gender==="male" ? "0 50%" : "100% 50%";
+}
+function render(){
+  setSprite(document.getElementById("heroSprite"));
+  setSprite(document.getElementById("previewSprite"));
+  document.querySelectorAll("[data-gender]").forEach(b=>b.classList.toggle("active",b.dataset.gender===gender));
+}
+document.addEventListener("click",e=>{
+  const p=e.target.closest("[data-page]");
+  if(p){
+    document.querySelectorAll(".page").forEach(x=>x.classList.remove("active"));
+    document.getElementById(p.dataset.page).classList.add("active");
+    document.querySelectorAll(".nav button").forEach(x=>x.classList.toggle("active",x.dataset.page===p.dataset.page));
+    scrollTo(0,0);return;
+  }
+  const g=e.target.closest("[data-gender]");
+  if(g){gender=g.dataset.gender;localStorage.setItem("become_gender_v3",gender);render();}
+});
+render();
+</script>
+</body>
+</html>
