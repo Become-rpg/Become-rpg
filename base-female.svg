@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="176" viewBox="0 0 128 176">
+<rect width="128" height="176" fill="none"/>
+<!-- head/ears/neck -->
+<path fill="#D49A70" d="M40 25h48v6h8v35h-8v8H40v-8h-8V31h8z"/><rect x="52" y="74" width="24" height="16" fill="#D49A70"/>
+<!-- face shadows -->
+<rect x="40" y="65" width="48" height="9" fill="#C58962"/><rect x="32" y="43" width="8" height="16" fill="#D49A70"/><rect x="88" y="43" width="8" height="16" fill="#D49A70"/>
+<!-- eyes -->
+<rect x="45" y="48" width="6" height="6" fill="#4C74B9"/><rect x="77" y="48" width="6" height="6" fill="#4C74B9"/>
+<!-- nose/mouth -->
+<rect x="62" y="54" width="5" height="8" fill="#B77758"/><rect x="56" y="65" width="16" height="4" fill="#A85852"/>
+<!-- torso -->
+<path fill="#4A3E66" d="M39 84h50l11 12v39H28V96z"/><path fill="#332A4A" d="M35 91h58v34H35z"/><rect x="61" y="89" width="6" height="36" fill="#BFC8D0"/>
+<!-- belt -->
+<rect x="31" y="122" width="66" height="7" fill="#151B22"/><rect x="61" y="121" width="6" height="9" fill="#D6A83E"/>
+<!-- legs/boots -->
+<rect x="39" y="129" width="19" height="33" fill="#202434"/><rect x="70" y="129" width="19" height="33" fill="#202434"/><rect x="36" y="158" width="24" height="8" fill="#303348"/><rect x="68" y="158" width="24" height="8" fill="#303348"/>
+<!-- arms -->
+<path fill="#304254" d="M28 96h11v32H30zM89 96h11v32H89z"/><rect x="28" y="124" width="11" height="9" fill="#D49A70"/><rect x="89" y="124" width="11" height="9" fill="#D49A70"/>
+</svg>
